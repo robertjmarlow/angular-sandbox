@@ -1,0 +1,8 @@
+# angular build
+.angular
+
+# mac
+.DS_Store
+
+# node/npm
+node_modules

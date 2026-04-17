@@ -23,9 +23,9 @@ export class Home {
 
   housingLocation: HousingLocationInfo = {
     id: 9999,
-    name: 'Test Home',
-    city: 'Test city',
-    state: 'ST',
+    name: 'Overpriced Apartments',
+    city: 'San Francisco',
+    state: 'CA',
     photo: `${this.baseUrl}/example-house.jpg`,
     availableUnits: 99,
     wifi: true,

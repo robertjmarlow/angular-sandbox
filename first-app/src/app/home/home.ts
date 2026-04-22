@@ -30,7 +30,7 @@ export class Home {
   constructor() {
    this.housingService
       .getAllHousingLocations()
-      .then((housingLocationList: HousingLocationInfo[]) => {
+      .subscribe((housingLocationList: HousingLocationInfo[]) => {
         this.housingLocationList = housingLocationList;
         this.filteredLocationList = housingLocationList;
         this.changeDetectorRef.markForCheck();

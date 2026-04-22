@@ -30,10 +30,14 @@ export class Home {
   constructor() {
    this.housingService
       .getAllHousingLocations()
-      .subscribe((housingLocationList: HousingLocationInfo[]) => {
-        this.housingLocationList = housingLocationList;
-        this.filteredLocationList = housingLocationList;
-        this.changeDetectorRef.markForCheck();
+      .subscribe({
+        next: (housingLocationList: HousingLocationInfo[]) => {
+          this.housingLocationList = housingLocationList;
+          this.filteredLocationList = housingLocationList;
+          this.changeDetectorRef.markForCheck();
+        },
+        error: (e) => console.error(e),
+        complete: () => console.info('all housing locations retrieved'),
       });
   }
 

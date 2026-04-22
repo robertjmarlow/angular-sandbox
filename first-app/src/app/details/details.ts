@@ -58,13 +58,17 @@ export class Details {
 
   constructor() {
     const housingLocationId = Number(this.route.snapshot.params['id']);
-    this.housingService.getHousingLocationById(housingLocationId).subscribe((housingLocation: HousingLocationInfo) => {
-      this.housingLocation = housingLocation;
-      this.changeDetectorRef.markForCheck();
+    this.housingService.getHousingLocationById(housingLocationId).subscribe({
+      next: (housingLocation: HousingLocationInfo) => {
+        this.housingLocation = housingLocation;
+        this.changeDetectorRef.markForCheck();
+      },
+      error: (e) => console.error(e),
+      complete: () => console.info(`housing location [${housingLocationId}] retrieved`),
     });
   }
 
-    submitApplication() {
+  submitApplication() {
     this.housingService.submitApplication(
       this.applyForm.value.firstName ?? '',
       this.applyForm.value.lastName ?? '',
